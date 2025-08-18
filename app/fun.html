@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PontoPro - Funcionários</title>
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/fun.css" />
+  </head>
+  <body>
+    <div class="loading">
+      <div class="circle"></div>
+    </div>
+    <div class="layout-site">
+      <!-- cabecalho do layout -->
+      <header class="layout-header">
+        <!-- cabecalho da esquerda -->
+        <div class="header-left">
+          <!-- Menu Hamburguer -->
+          <button class="button-hamburguer">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="logo">
+            <div class="logo-icon">P</div>
+            <span>PontoPro</span>
+          </div>
+        </div>
+
+        <!-- cabecalho da direita -->
+        <div class="header-right">
+          <div class="user-info">
+            <span class="user-name" id="userName">Higorhenry102</span>
+            <div class="user-avatar">H</div>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Sair</button>
+        </div>
+      </header>
+
+      <!-- navegacao de links -->
+      <aside class="layout-sidemenu">
+        <nav class="nav-layout">
+          <ul class="ul-layout">
+            <li class="li-layout">
+              <a href="dashboard.html" class="a-layout">
+                <span class="span-icon">📊</span>
+                <span class="span-txt">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="" class="a-layout activate">
+                <span class="span-icon">👥</span>
+                <span class="span-txt">Funcionários</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="newFun.html" class="a-layout">
+                <span class="span-icon">➕</span>
+                <span class="span-txt">Novo Funcionário</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="reports.html" class="a-layout">
+                <span class="span-icon">📈</span>
+                <span class="span-txt">Relatórios</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="settings.html" class="a-layout">
+                <span class="span-icon">⚙️</span>
+                <span class="span-txt">Configurações</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- conteudo da pagina -->
+      <main class="layout-main">
+        <div class="main-header">
+          <div class="main-header-left">
+            <h1>Funcionário</h1>
+            <p>Gerencie todos os funcionários da empresa</p>
+          </div>
+          <div class="main-header-right">
+            <div class="btt-container">
+              <button class="btt-seeFun" id="seeFun" onclick="goNewFunScreen()">
+                <span class="btt-icon">➕</span>
+                <span class="btt-txt">Novo Funcionário</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filters-section">
+          <div class="filters-container">
+            <div class="search-filter">
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Buscar funcionários..."
+              />
+            </div>
+            <div class="department-filter">
+              <select id="departmentFilter">
+                <option value="">Todos os departamentos</option>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Recursos Humanos">Recursos Humanos</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Vendas">Vendas</option>
+              </select>
+            </div>
+            <div class="status-filter">
+              <select id="statusFilter">
+                <option value="">Todos os status</option>
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+                <option value="Férias">Férias</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="employees-section">
+          <div class="employees-container">
+            <div class="employees-header">
+              <h2>Lista de Funcionários</h2>
+            </div>
+
+            <div class="employees-content">
+              <div class="table-view active" id="tableView">
+                <div class="table-container">
+                  <table class="employees-table">
+                    <thead>
+                      <tr>
+                        <th>Funcionário</th>
+                        <th>Cargo</th>
+                        <th>Departamento</th>
+                        <th>Telefone</th>
+                        <th>Status</th>
+                        <th>Data de Admissão</th>
+                        <th>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody id="employeesTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="empty-state" id="emptyState" style="display: none">
+                <div class="empty-icon">👥</div>
+                <h3>Nenhum funcionário encontrado</h3>
+                <p>
+                  Adicione novos funcionários para começar a gerenciar sua
+                  equipe.
+                </p>
+                <a href="cadastro.html" class="btn btn-primary"
+                  >Cadastrar Funcionário</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- Modal de Edição -->
+    <div class="modal-overlay hidden" id="editModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h2>Editar Funcionário</h2>
+          <button class="modal-close" id="closeModalBtn">✖</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modalBody-left">
+            <fieldset class="body-info">
+              <legend class="txt-title">Informações Pessoais</legend>
+              <div class="peInfo">
+                <div class="input-row">
+                  <div class="input-info">
+                    <label for="editName" class="input-title"
+                      >Nome Completo *</label
+                    >
+                    <input type="text" id="editName" name="editName" />
+                  </div>
+
+                  <div class="input-info">
+                    <label for="editEmail" class="input-title">Email *</label>
+                    <input type="email" id="editEmail" name="editEmail" />
+                  </div>
+
+                  <div class="input-info">
+                    <label for="editCpf" class="input-title">CPF *</label>
+                    <input type="text" id="editCpf" name="editCpf" />
+                  </div>
+                </div>
+
+                <div class="input-row">
+                  <div class="input-info">
+                    <label for="editPhone" class="input-title"
+                      >Telefone *</label
+                    >
+                    <input type="text" id="editPhone" name="editPhone" />
+                  </div>
+
+                  <div class="input-info">
+                    <label for="editEndereco" class="input-title"
+                      >Endereço *</label
+                    >
+                    <input type="text" id="editEndereco" name="editEndereco" />
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="modalBody-right">
+            <fieldset class="body-info">
+              <legend class="txt-title">Informações Profissionais</legend>
+              <div class="input-row">
+                <div class="input-info">
+                  <label for="editPosition" class="input-title">Cargo *</label>
+                  <input type="text" id="editPosition" name="editPosition" />
+                </div>
+
+                <div class="input-info">
+                  <label for="editDepartament" class="input-title"
+                    >Departamento *</label
+                  >
+                  <select id="editDepartament" name="editDepartament">
+                    <option value="">Selecione...</option>
+                    <option value="TI">TI</option>
+                    <option value="RH">RH</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
+                </div>
+
+                <div class="input-info">
+                  <label for="workTime" class="input-title"
+                    >Horário de Trabalho *</label
+                  >
+                  <select name="editWorkTime" id="editWorkTime">
+                    <option value="">Selecione...</option>
+                    <option value="Manha">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div class="input-info">
+                  <label for="editSalary" class="input-title">Salario *</label>
+                  <input
+                    type="number"
+                    id="editSalary"
+                    name="editSalary"
+                    placeholder="0.00"
+                  />
+                </div>
+
+                <div class="input-info">
+                  <label for="editStatus" class="input-title">Status *</label>
+                  <select name="editStatus" id="editStatus">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                    <option value="Ferias">Férias</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="modal-btn cancel" id="cancelEdit">Cancelar</button>
+          <button class="modal-btn save" id="saveEdit">
+            Salvar Alterações
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="../js/fun.js"></script>
+  <script type="module" src="../js/modalEditfun.js"></script>
+</html>

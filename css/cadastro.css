@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #7c8eb7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.cadastro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cadastro-card {
+  background-color: white;
+  padding: 3rem 2.5rem;
+  border-radius: 0 20px 20px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 15px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 1.8rem;
+  background-color: #2563eb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.cadastro-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #1e293b;
+}
+
+.cadastro-subtitle {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.cadastro-form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.form-group input {
+  padding: 0.675rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.775rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.775rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.checkbox-txt {
+  margin-bottom: 0.1em;
+}
+
+.forgot-password {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 0.1em;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.form-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.675rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 5px;
+}
+
+.form-btn:hover {
+  background: #1d4ed8;
+}
+
+.form-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading-btn {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+.form-btn.loading .loading-btn {
+  display: block;
+}
+
+.form-btn.loading span {
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cadastro-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cadastro-footer p {
+  color: #94a3b8;
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.cadastro-banner {
+  background-color: blue;
+  padding: 3rem 2.5rem;
+  color: white;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px 0 0 20px;
+}
+
+.banner-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.banner-content p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.banner-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.cadastro-footer-link {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+}
+
+.go-login {
+  color: #2765ee;
+  text-decoration: none;
+}
+
+.go-login:hover {
+  text-decoration: underline;
+}
+
+.span-cadastro {
+  font-size: 0.775rem;
+  color: #6c7384;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 950px) {
+  .banner-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .banner-content p {
+    font-size: 0.925rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 810px) {
+  .cadastro-banner {
+    display: none;
+  }
+
+  .cadastro-card {
+    border-radius: 20px;
+  }
+
+  .cadastro-container {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .cadastro-page {
+    padding: 0.5rem;
+  }
+
+  .cadastro-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .cadastro-footer p {
+    font-size: 0.6725rem;
+  }
+
+  .cadastro-footer {
+    margin-top: 1.5rem;
+  }
+}

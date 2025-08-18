@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PontoPro - Novo Funcionário</title>
+    <link rel="stylesheet" href="../css/newFun.css" />
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="loading">
+      <div class="circle"></div>
+    </div>
+    <div class="layout-site">
+      <!-- cabecalho do layout -->
+      <header class="layout-header">
+        <!-- cabecalho da esquerda -->
+        <div class="header-left">
+          <!-- Menu Hamburguer -->
+          <button class="button-hamburguer">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="logo">
+            <div class="logo-icon">P</div>
+            <span>PontoPro</span>
+          </div>
+        </div>
+
+        <!-- cabecalho da direita -->
+        <div class="header-right">
+          <div class="user-info">
+            <span class="user-name" id="userName">Higorhenry102</span>
+            <div class="user-avatar">H</div>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Sair</button>
+        </div>
+      </header>
+
+      <!-- navegacao de links -->
+      <aside class="layout-sidemenu">
+        <nav class="nav-layout">
+          <ul class="ul-layout">
+            <li class="li-layout">
+              <a href="dashboard.html" class="a-layout">
+                <span class="span-icon">📊</span>
+                <span class="span-txt">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="fun.html" class="a-layout">
+                <span class="span-icon">👥</span>
+                <span class="span-txt">Funcionários</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="newFun.html" class="a-layout activate">
+                <span class="span-icon">➕</span>
+                <span class="span-txt">Novo Funcionário</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="reports.html" class="a-layout">
+                <span class="span-icon">📈</span>
+                <span class="span-txt">Relatórios</span>
+              </a>
+            </li>
+
+            <li class="li-layout">
+              <a href="settings.html" class="a-layout">
+                <span class="span-icon">⚙️</span>
+                <span class="span-txt">Configurações</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- conteudo da pagina -->
+      <main class="layout-main">
+        <div class="main-header">
+          <div class="main-header-left">
+            <h1>Novo Funcionário</h1>
+            <p>Cadastre um novo funcionário no sistema</p>
+          </div>
+          <div class="main-header-right">
+            <div class="btt-container">
+              <button class="btt-seeFun" id="seeFun">
+                <span class="btt-icon">👥</span>
+                <span class="btt-txt">Ver Funcionário</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="main-body">
+          <fieldset class="body-info">
+            <legend class="txt-title">Informações Pessoais</legend>
+            <div class="peInfo">
+              <div class="input-row">
+                <div class="input-info">
+                  <label for="name" class="input-title">Nome Completo *</label>
+                  <input type="text" id="name" name="name" />
+                </div>
+
+                <div class="input-info">
+                  <label for="email" class="input-title">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seu@email.com"
+                  />
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div class="input-info">
+                  <label for="phone" class="input-title">Telefone *</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    placeholder="(19) 99973-7199"
+                  />
+                </div>
+
+                <div class="input-info">
+                  <label for="cpf" class="input-title">CPF *</label>
+                  <input
+                    type="text"
+                    id="cpf"
+                    name="cpf"
+                    placeholder="000.000.000-00"
+                  />
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div class="input-info">
+                  <label for="date" class="input-title"
+                    >Data de Nascimento *</label
+                  >
+                  <input type="date" id="date" name="date" />
+                </div>
+
+                <div class="input-info">
+                  <label for="address" class="input-title">Endereço *</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Rua, número, bairro"
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="body-info">
+            <legend class="txt-title">Informações Profissionais</legend>
+
+            <div class="input-row">
+              <div class="input-info">
+                <label for="position" class="input-title">Cargo *</label>
+                <input type="text" id="position" name="position" />
+              </div>
+
+              <div class="input-info">
+                <label for="departament" class="input-title"
+                  >Departamento *</label
+                >
+                <select name="departament" id="departament">
+                  <option value="">Selecione...</option>
+                  <option value="TI">TI</option>
+                  <option value="RH">RH</option>
+                  <option value="Financeiro">Financeiro</option>
+                  <option value="Marketing">Marketing</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="input-info">
+                <label for="dataAdmission" class="input-title"
+                  >Data da Admissão *</label
+                >
+                <input type="date" id="dataAdmission" name="dataAdmission" />
+              </div>
+
+              <div class="input-info">
+                <label for="salary" class="input-title">Salario *</label>
+                <input
+                  type="number"
+                  id="salary"
+                  name="salary"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="input-info">
+                <label for="workTime" class="input-title"
+                  >Horário de Trabalho *</label
+                >
+                <select name="workTime" id="workTime">
+                  <option value="">Selecione...</option>
+                  <option value="Manha">Manhã</option>
+                  <option value="Tarde">Tarde</option>
+                  <option value="Noite">Noite</option>
+                </select>
+              </div>
+
+              <div class="input-info">
+                <label for="status" class="input-title">Status *</label>
+                <select name="status" id="workTime">
+                  <option value="Ativo">Ativo</option>
+                  <option value="Inativo">Inativo</option>
+                  <option value="Ferias">Férias</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="body-info">
+            <legend class="txt-title">Observações</legend>
+            <div class="textarea-info">
+              <label for="observations" class="input-title"
+                >Observações adicionais</label
+              >
+              <textarea
+                name="observations"
+                id="observations"
+                placeholder="Informações adicionais sobre o funcionário..."
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <div class="btt-register">
+            <button id="bttSaveUser">
+              <span class="register-bttIcon">💾</span>
+              <span id="submitFun">Cadastrar Funcionário</span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script type="module" src="../js/newFun.js"></script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PontoPro - Página de Login</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="loading">
+      <div class="circle"></div>
+    </div>
+    <!-- Aonde irá agrupa os lado do login -->
+    <main class="login-conteiner">
+      <!-- Card de Login lado esquerdo  -->
+      <div class="login-card">
+        <!-- Cabecalho da pagina com logo, nome e Subtitulo -->
+        <header class="login-header">
+          <div class="logo">
+            <div class="logo-icon">P</div>
+            <h1>PontoPro</h1>
+          </div>
+          <div class="login-subtitle">
+            Sistema de Gerenciamento de Funcionários
+          </div>
+        </header>
+        <!-- Sections de Login -->
+        <section class="login-form-sections">
+          <!-- Formulario de login -->
+          <form id="loginForm" class="login-form">
+            <!-- grupos de inputs do formulario, checkbox pra manter logado e link de trocar senha-->
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="*******"
+              />
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="remember" />
+                <span class="checkmark"></span>
+                <span class="checkbox-txt">Lembrar-me</span>
+              </label>
+              <a href="#" class="forgot-password">Esqueceu a senha?</a>
+            </div>
+
+            <!--  -->
+            <button type="submit" class="form-btn">
+              <span>Entrar</span>
+              <div class="loading-btn"></div>
+            </button>
+          </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="login-footer">
+          <p>&copy; 2025 PontoPro. Todos os direitos reservados.</p>
+        </footer>
+      </div>
+
+      <div class="login-banner">
+        <div class="banner-content">
+          <h2>
+            Gerencie sua equipe com <br />
+            eficiência
+          </h2>
+          <p>
+            Controle de ponto, cadastro de funcionários e <br />
+            relatórios em uma plataforma moderna e intuitiva.
+          </p>
+          <div class="banner-features">
+            <div class="feature">
+              <div class="feature-icon">👥</div>
+              <span>Gestão de Equipe</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">📊</div>
+              <span>Relatórios Detalhados</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">⏰</div>
+              <span>Controle de Ponto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script type="module" src="js/index.js" defer></script>
+</html>
