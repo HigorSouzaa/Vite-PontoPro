@@ -1,5 +1,4 @@
 const URL = import.meta.env.VITE_API_URL;
-import openEditModal from "./modalEditfun";
 
 function goNewFunScreen() {
   window.location = "newFun.html";
@@ -10,7 +9,6 @@ function pegarIniciais(nomeCompleto) {
   const partes = nomeCompleto.trim().split(" ");
   const primeiraLetra = partes[0][0].toUpperCase();
   const ultimaLetra = partes[partes.length - 1][0].toUpperCase();
-
   return primeiraLetra + ultimaLetra;
 }
 
@@ -78,19 +76,6 @@ async function verificarToken() {
   }
 }
 
-function setButtonLoading(isLoading) {
-  const text = document.querySelector(".form-btn span");
-  const spinner = document.querySelector(".loading-btn");
-
-  if (isLoading) {
-    text.style.display = "none";
-    spinner.style.display = "flex";
-  } else {
-    text.style.display = "flex";
-    spinner.style.display = "none";
-  }
-}
-
 async function deleteUser(id) {
   try {
     const response = await fetch(`${URL}/users/deleteById/${id}`, {
@@ -116,6 +101,38 @@ function confirmDelete(id) {
   if (confirmed) {
     deleteUser(id);
   }
+}
+
+async function openEditModal(userId) {
+  const editModal = document.getElementById("editModal");
+
+  try {
+    const responseGetUser = await fetch(
+      `http://localhost:3000/users/getUserById/${userId}`
+    );
+    const user = await responseGetUser.json();
+
+    document.getElementById("editEmail").value = user.email || "";
+    document.getElementById("editName").value = user.name || "";
+    document.getElementById("editCpf").value = user.cpf || "";
+    document.getElementById("editEndereco").value = user.address || "";
+    document.getElementById("editPhone").value = user.phone || "";
+    document.getElementById("editPosition").value = user.position || "";
+    document.getElementById("editDepartament").value = user.department || "";
+    document.getElementById("editWorkTime").value = user.workTime || "";
+    document.getElementById("editStatus").value = user.status;
+    document.getElementById("editSalary").value = user.salary || 0;
+  } catch (error) {
+    alert("Erro ao buscar informação desse usuario");
+  } finally {
+    console.log(`Abrindo modal para o usuário com ID: ${userId}`);
+    editModal.classList.remove("hidden");
+  }
+}
+
+function closeEditModal() {
+  const editModal = document.getElementById("editModal");
+  editModal.classList.add("hidden");
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -150,17 +167,38 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td><span class="status-badge ativo">${item.status}</span></td>
         <td>${formatDate(item.admissionDate)}</td>
         <td class="actions-cell">
-            <button onclick="${openEditModal}" class="action-btn edit-btn">✏️ Editar</button>
-            <button onclick="confirmDelete('${
+            <button data-action="edit" data-id="${
               item._id
-            }')" class="action-btn delete-btn">🗑️ Excluir</button>
-
+            }" class="action-btn edit-btn">✏️ Editar</button>
+            <button data-action="delete" data-id="${
+              item._id
+            }" class="action-btn delete-btn">🗑️ Excluir</button>
         </td>
       `;
-
       tbody.appendChild(tr);
+    });
+
+    // Adiciona o event listener para os botões da tabela após eles serem criados
+    tbody.addEventListener("click", (event) => {
+      const target = event.target;
+      // Verifica se o clique foi em um botão de ação com o atributo data-action
+      if (target.matches('.action-btn[data-action="edit"]')) {
+        const userId = target.dataset.id;
+        openEditModal(userId);
+      } else if (target.matches('.action-btn[data-action="delete"]')) {
+        const userId = target.dataset.id;
+        confirmDelete(userId);
+      }
     });
   } catch (error) {
     console.log(error);
   }
+
+  // Event listeners para os botões de fechar o modal
+  document
+    .getElementById("closeModalBtn")
+    .addEventListener("click", closeEditModal);
+  document
+    .getElementById("cancelEdit")
+    .addEventListener("click", closeEditModal);
 });
