@@ -81,7 +81,137 @@
       </aside>
 
       <!-- conteudo da pagina -->
-      <main class="layout-main">Dashboard</main>
+      <main class="main-content">
+        <section class="dashboard-header">
+          <h1>Dashboard</h1>
+          <p>Visão geral do sistema de gerenciamento</p>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon employees">👥</div>
+            <div class="stat-content">
+              <h3 class="stat-number" id="totalEmployees">0</h3>
+              <p class="stat-label">Total de Funcionários</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon active">✅</div>
+            <div class="stat-content">
+              <h3 class="stat-number" id="activeEmployees">0</h3>
+              <p class="stat-label">Funcionários Ativos</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon departments">🏢</div>
+            <div class="stat-content">
+              <h3 class="stat-number">5</h3>
+              <p class="stat-label">Departamentos</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon pending">⏰</div>
+            <div class="stat-content">
+              <h3 class="stat-number">3</h3>
+              <p class="stat-label">Pendências</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-content">
+          <div class="content-grid">
+            <article class="recent-employees card">
+              <header class="card-header">
+                <h2>Funcionários Recentes</h2>
+                <a href="fun.html" class="view-all">Ver todos</a>
+              </header>
+              <div class="card-content">
+                <div class="employee-list" id="recentEmployees">
+                  <div class="employee-item">
+                    <div class="employee-avatar">JS</div>
+                    <div class="employee-info">
+                      <h4>João Silva</h4>
+                      <p>Desenvolvedor</p>
+                    </div>
+                    <span class="employee-status active">Ativo</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="quick-actions card">
+              <header class="card-header">
+                <h2>Ações Rápidas</h2>
+              </header>
+              <div class="card-content">
+                <div class="action-buttons">
+                  <a href="newFun.html" class="action-btn primary">
+                    <span class="btn-icon">➕</span>
+                    <span>Novo Funcionário</span>
+                  </a>
+                  <a href="fun.html" class="action-btn secondary">
+                    <span class="btn-icon">👥</span>
+                    <span>Listar Funcionários</span>
+                  </a>
+                  <a href="reports.html" class="action-btn tertiary">
+                    <span class="btn-icon">📊</span>
+                    <span>Gerar Relatório</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <article class="departments-overview card">
+            <header class="card-header">
+              <h2>Departamentos</h2>
+            </header>
+            <div class="card-content">
+              <div class="departments-grid">
+                <div class="department-item">
+                  <div class="dept-info">
+                    <h4>Tecnologia</h4>
+                    <p class="dept-count" id="techCount">0 funcionários</p>
+                  </div>
+                  <div class="dept-chart">
+                    <div class="chart-bar" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div class="department-item">
+                  <div class="dept-info">
+                    <h4>Recursos Humanos</h4>
+                    <p class="dept-count" id="rhCount">0 funcionários</p>
+                  </div>
+                  <div class="dept-chart">
+                    <div class="chart-bar" style="width: 45%"></div>
+                  </div>
+                </div>
+                <div class="department-item">
+                  <div class="dept-info">
+                    <h4>Financeiro</h4>
+                    <p class="dept-count" id="financeCount">0 funcionários</p>
+                  </div>
+                  <div class="dept-chart">
+                    <div class="chart-bar" style="width: 60%"></div>
+                  </div>
+                </div>
+                <div class="department-item">
+                  <div class="dept-info">
+                    <h4>Marketing</h4>
+                    <p class="dept-count" id="marketingCount">0 funcionários</p>
+                  </div>
+                  <div class="dept-chart">
+                    <div class="chart-bar" style="width: 30%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
     </div>
   </body>
   <script type="module" src="../js/dashboard.js"></script>
