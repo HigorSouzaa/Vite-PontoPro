@@ -87,6 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
   acordarBackend();
   verificarToken();
 
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      // Remove o token dos dois storages
+      localStorage.removeItem("token_pontopro_users");
+      sessionStorage.removeItem("token_pontopro_users");
+
+      // Redireciona para a tela de login
+      window.location.href = "index.html";
+    });
+  }
+
+
   document.getElementById("bttSaveUser").addEventListener("click", saveUser);
 });
 

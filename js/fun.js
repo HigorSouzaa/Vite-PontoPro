@@ -107,11 +107,10 @@ async function openEditModal(userId) {
   const editModal = document.getElementById("editModal");
 
   try {
-    const responseGetUser = await fetch(
-      `http://localhost:3000/users/getUserById/${userId}`
-    );
+    const responseGetUser = await fetch(`${URL}/users/getUserById/${userId}`);
     const user = await responseGetUser.json();
 
+    sessionStorage.setItem("userId", user._id);
     document.getElementById("editEmail").value = user.email || "";
     document.getElementById("editName").value = user.name || "";
     document.getElementById("editCpf").value = user.cpf || "";
@@ -132,12 +131,80 @@ async function openEditModal(userId) {
 
 function closeEditModal() {
   const editModal = document.getElementById("editModal");
+  sessionStorage.removeItem("userId");
   editModal.classList.add("hidden");
 }
+
+async function updateUser() {
+  const userId = sessionStorage.getItem("userId");
+
+  const updatedUser = {
+    email: document.getElementById("editEmail").value,
+    name: document.getElementById("editName").value,
+    cpf: document.getElementById("editCpf").value,
+    address: document.getElementById("editEndereco").value,
+    phone: document.getElementById("editPhone").value,
+    position: document.getElementById("editPosition").value,
+    department: document.getElementById("editDepartament").value,
+    workTime: document.getElementById("editWorkTime").value,
+    salary: parseFloat(document.getElementById("editSalary").value),
+    status: document.getElementById("editStatus").value,
+  
+  };
+
+
+  const isManager = updatedUser.department === "RH" ? true : false;
+
+  console.log(isManager);
+  
+  updatedUser.isManager = isManager;
+
+
+  console.log(updatedUser.isManager);
+
+  
+
+  try {
+    const response = await fetch(`${URL}/users/updateUserById/${userId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    });
+
+    if (response.ok) {
+      alert("Usuário atualizado com sucesso.");
+      closeEditModal();
+    } else {
+      const errorData = await response.json();
+      alert(
+        "Erro ao atualizar usuário: " + (errorData.erro || "Erro desconhecido")
+      );
+    }
+  } catch (error) {
+    alert("Erro ao conectar com o servidor.");
+    console.error(error);
+  }
+}
+
+document.getElementById("saveEdit").addEventListener("click", updateUser);
 
 document.addEventListener("DOMContentLoaded", async () => {
   acordarBackend();
   verificarToken();
+
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      // Remove o token dos dois storages
+      localStorage.removeItem("token_pontopro_users");
+      sessionStorage.removeItem("token_pontopro_users");
+
+      // Redireciona para a tela de login
+      window.location.href = "index.html";
+    });
+  }
 
   try {
     const response = await fetch(`${URL}/users/getAll`);
@@ -194,7 +261,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(error);
   }
 
-  // Event listeners para os botões de fechar o modal
   document
     .getElementById("closeModalBtn")
     .addEventListener("click", closeEditModal);
