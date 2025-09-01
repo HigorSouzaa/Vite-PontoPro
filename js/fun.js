@@ -1,7 +1,7 @@
 const URL = import.meta.env.VITE_API_URL;
 
 function goNewFunScreen() {
-  window.location = "newFun.html";
+  window.location = "/app/newFun.html";
 }
 
 // Pega as inicias Joao lima de Souza(J de Joao e S de Souza)
