@@ -62,7 +62,7 @@ async function login() {
       alert("E-mail ou senha incorretos.");
       return;
     }
-    
+
     if (!data.user?.isManager) {
       alert("Somente para usuários com permissão");
       return;
