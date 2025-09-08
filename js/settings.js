@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (userId) {
     loadUserPhoto();
   }
-
   loadUserData(userId, token);
 });
 
@@ -68,13 +67,10 @@ photoInput.addEventListener("change", async (e) => {
   formData.append("photo", file);
 
   try {
-    const response = await fetch(
-      `${API_URL}/users/${userId}/photo`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch(`${API_URL}/users/${userId}/photo`, {
+      method: "POST",
+      body: formData,
+    });
 
     if (response.ok) {
       const data = await response.json();
@@ -135,14 +131,11 @@ function getUserIdFromToken(token) {
 
 async function loadUserData(userId, token) {
   try {
-    const response = await fetch(
-      `${API_URL}/users/getUserById/${userId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${API_URL}/users/getUserById/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) throw new Error("Erro ao buscar usuário");
 
@@ -153,7 +146,20 @@ async function loadUserData(userId, token) {
     document.getElementById("userEmail").value = user.email || "";
     document.getElementById("userPhone").value = user.phone || "";
     document.getElementById("userRole").value = user.position || "";
+
+    const iniciaisNome = document.querySelector("#avatarInitials");
+
+    iniciaisNome.innerHTML = pegarIniciais(user.name);
+    
   } catch (err) {
     console.error("Erro ao carregar dados do usuário:", err);
   }
+}
+
+// Pega as inicias Joao lima de Souza(J de Joao e S de Souza)
+function pegarIniciais(nomeCompleto) {
+  const partes = nomeCompleto.trim().split(" ");
+  const primeiraLetra = partes[0][0].toUpperCase();
+  const ultimaLetra = partes[partes.length - 1][0].toUpperCase();
+  return primeiraLetra + ultimaLetra;
 }
