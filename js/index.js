@@ -75,7 +75,7 @@ async function login() {
     }
 
     alert("Login feito com sucesso!");
-    window.location = "../app/dashboard.html";
+    window.location = "app/dashboard.html";
   } catch (error) {
     console.error("Erro na requisição:", error);
     alert("Erro ao tentar logar. Verifique sua conexão ou tente mais tarde.");
