@@ -190,6 +190,210 @@ p {
   color: #1e293b;
 }
 
-.layout-main {
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #999;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Config CSS */
+.card {
+  background: #ffffff;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.main-content {
   grid-area: main;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.config-header {
+  margin-bottom: 2rem;
+}
+
+.config-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.config-header p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Settings Cards */
+.settings-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-card {
+  background: #ffffff;
+  padding: 1.5rem 1.5rem;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #1e293b;
+  font-size: 0.875rem;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.profile-photo-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.photo-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.edit-photo-btn {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 7rem;
+}
+
+/* Avatar de Perfil */
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #2563eb; /* fundo azul padrão */
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.avatar span {
+  pointer-events: none; /* aparece só se não tiver imagem */
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .photo-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+  }
+
+  .settings-cards {
+    gap: 1rem;
+  }
+
+  .settings-card .card-header,
+  .settings-card .card-content {
+    padding: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
 }
