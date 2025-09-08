@@ -1,223 +1,171 @@
-# PointPro RH - Sistema de Gerenciamento de Funcionários
+# PontoPro RH - Sistema de Gerenciamento de Funcionários
 
-![PointPro RH](https://img.shields.io/badge/PointPro%20RH-v1.0.0-blue)
+![PontoPro RH](https://img.shields.io/badge/PontoPro%20RH-v1.0.0-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
+
+---
 
 ## 📋 Sobre o Projeto
 
-O **PointPro RH** é um sistema ERP completo e moderno para gerenciamento de funcionários, desenvolvido com HTML5, CSS3 e JavaScript puro. O sistema oferece uma interface intuitiva e responsiva para administração de recursos humanos, incluindo cadastro de funcionários, geração de relatórios e configurações administrativas.
+O **PontoPro RH** é uma **aplicação full-stack** completa e moderna para gerenciamento de Recursos Humanos (RH). O projeto é composto por um **front-end** intuitivo em HTML, CSS e JavaScript e um **back-end robusto** construído com Node.js e Express.
+
+Ele oferece uma interface completa para administração de funcionários, com funcionalidades que incluem cadastro, login seguro, e gerenciamento de dados persistentes em um banco de dados MongoDB.
+
+---
 
 ## ✨ Funcionalidades Principais
 
-### 🔐 Sistema de Autenticação
-- Login seguro com validação de credenciais
-- Armazenamento de sessão no Local Storage
-- Proteção de rotas e redirecionamento automático
-- Opção "Lembrar-me" para persistência de login
+- **Sistema de Autenticação Completo**
 
-### 📊 Dashboard Interativo
-- Visão geral com estatísticas em tempo real
-- Cards informativos com total de funcionários, ativos e departamentos
-- Lista de funcionários recentes
-- Gráficos de distribuição por departamento
-- Ações rápidas para navegação
+  - Login seguro com validação de credenciais.
+  - Autenticação via **JWT (JSON Web Tokens)**.
+  - Senhas criptografadas com **Bcrypt.js**.
+  - Armazenamento de sessão no Local Storage para persistência.
+  - Proteção de rotas e redirecionamento automático.
 
-### 👥 Gerenciamento de Funcionários
-- **Listagem completa** com visualização em tabela e grid
-- **Filtros avançados** por nome, departamento e status
-- **Cadastro de novos funcionários** com validação completa
-- **Edição de dados** existentes
-- **Exclusão** com confirmação de segurança
-- **Máscaras automáticas** para telefone e CPF
+- **Dashboard Interativo**
 
-### 📈 Sistema de Relatórios
-- **Relatórios personalizados** com filtros por período, departamento e status
-- **Relatórios rápidos** pré-configurados
-- **Múltiplos formatos** de exportação (PDF, Excel, CSV)
-- **Gráficos visuais** de distribuição e estatísticas
-- **Histórico de relatórios** gerados
-- **Download e re-geração** de relatórios anteriores
+  - Visão geral com estatísticas em tempo real (total de funcionários, ativos, departamentos).
+  - Lista de funcionários recentes e ações rápidas.
+  - Gráficos de distribuição por departamento.
 
-### ⚙️ Configurações Administrativas
-- **Perfil do usuário** com edição de dados pessoais
-- **Alteração de senha** com validação
-- **Dados da empresa** (CNPJ, contatos, endereço)
-- **Gerenciamento de departamentos** (criar, editar, excluir)
-- **Preferências do sistema** (tema, notificações, formato de data)
-- **Sistema de backup** completo com restauração
-- **Informações de suporte** e contato
+- **Gerenciamento de Funcionários**
+
+  - Listagem completa com filtros avançados (nome, departamento, status).
+  - Cadastro, edição e exclusão de funcionários.
+  - Validação de formulários e máscaras automáticas (telefone e CPF).
+
+- **Configurações Administrativas**
+  - Gerenciamento de perfil, senha e dados da empresa.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5**: Estrutura semântica com tags apropriadas
-- **CSS3**: Estilização moderna com Grid, Flexbox e animações
-- **JavaScript ES6+**: Lógica de negócio e interatividade
-- **Local Storage**: Persistência de dados no navegador
-- **CSS Grid & Flexbox**: Layout responsivo e organizado
-- **Media Queries**: Responsividade para todos os dispositivos
+### Front-end
+
+- **HTML5**: Estrutura semântica do projeto.
+- **CSS3**: Estilização moderna, com ênfase em **CSS Grid, Flexbox e Media Queries** para um design responsivo.
+- **JavaScript ES6+**: Lógica de negócio, validações e interatividade no cliente.
+- **Local Storage**: Armazenamento temporário de dados e sessão no navegador.
+- **Vite**: Ferramenta de build para desenvolvimento front-end.
+
+### Back-end
+
+- **Node.js**: Ambiente de execução para o servidor.
+- **Express.js**: Framework para construção das APIs RESTful.
+- **MongoDB**: Banco de dados NoSQL para persistência dos dados.
+- **Mongoose**: Modelagem de dados para o MongoDB.
+- **Bcrypt.js**: Criptografia de senhas para segurança.
+- **JSON Web Token (JWT)**: Geração de tokens de autenticação.
+- **CORS**: Middleware para permitir requisições de diferentes origens.
+- **Dotenv**: Gerenciamento de variáveis de ambiente.
+- **Joi**: Validação de dados de entrada (schemas).
+- **Multer**: Middleware para upload de arquivos.
+- **Nodemailer**: Módulo para envio de e-mails.
+
+---
 
 ## 📁 Estrutura do Projeto
 
 ```
-pointpro-rh/
-├── index.html              # Página de login
-├── dashboard.html          # Dashboard principal
-├── funcionarios.html       # Listagem de funcionários
-├── cadastro.html          # Cadastro/edição de funcionários
-├── relatorios.html        # Sistema de relatórios
-├── configuracoes.html     # Configurações do sistema
-├── styles/
-│   ├── main.css           # Estilos globais e layout
-│   ├── login.css          # Estilos da página de login
-│   ├── dashboard.css      # Estilos do dashboard
-│   ├── funcionarios.css   # Estilos da listagem
-│   ├── forms.css          # Estilos dos formulários
-│   ├── relatorios.css     # Estilos dos relatórios
-│   └── configuracoes.css  # Estilos das configurações
-├── scripts/
-│   ├── auth.js            # Sistema de autenticação
-│   ├── employees.js       # Gerenciamento de funcionários
-│   ├── login.js           # Lógica da página de login
-│   ├── dashboard.js       # Lógica do dashboard
-│   ├── funcionarios.js    # Lógica da listagem
-│   ├── forms.js           # Validação de formulários
-│   ├── cadastro.js        # Lógica do cadastro
-│   ├── relatorios.js      # Sistema de relatórios
-│   └── configuracoes.js   # Lógica das configurações
-└── README.md              # Documentação do projeto
+/
+├── PontoPro-Backend/
+│   ├── app.js                # Configuracao do projeto
+│   ├── server.js             # Arquivo principal do servidor.
+│   ├── routes/               # Rotas da API.
+│   ├── models/               # Modelos de dados (Mongoose).
+│   ├── controllers/          # Lógica de negócio da aplicação.
+│   ├── services.js           # Configuracao do nodemailer e outros futuros servicos
+│   ├── .env                  # Variaveis de ambiente 
+│   └── ...
+├── Vite-PontoPro/
+│   ├── public/               # Arquivos estáticos (imagens, etc.).
+│   ├── app/                  # Código fonte do front-end.
+│   ├── index.html            # Arquivo HTML principal do Vite.
+│   ├── css/                  # Pastas de estilos de css.
+│   ├── js/                   # Arquivos de Js como index.js - logica de login
+│   ├── .env                  # Variaveis de ambiente 
+│   └── ...
+└── README.md
+
 ```
 
 ## 🚀 Como Executar
 
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/seu-usuario/pointpro-rh.git
-   cd pointpro-rh
-   ```
+1.  **Clone os repositórios**:
 
-2. **Abra o projeto**:
-   - Abra o arquivo `index.html` em um navegador web moderno
-   - Ou use um servidor local como Live Server (VS Code) ou Python SimpleHTTPServer
+    ```bash
+    git clone [https://github.com/HigorSouzaa/Vite-PontoPro.git](https://github.com/HigorSouzaa/Vite-PontoPro.git)
+    cd Vite-PontoPro
+    ```
 
-3. **Credenciais de acesso**:
-   - **E-mail**: admin@pointprorh.com
-   - **Senha**: admin123
+    ```bash
+    git clone [https://github.com/HigorSouzaa/PontoPro-Backend.git](https://github.com/HigorSouzaa/PontoPro-Backend.git)
+    cd PontoPro-Backend
+    ```
 
-## 💻 Requisitos do Sistema
+2.  **Instale as dependências do back-end**:
 
-- **Navegador moderno** com suporte a ES6+ (Chrome 60+, Firefox 55+, Safari 12+)
-- **JavaScript habilitado**
-- **Local Storage disponível** (habilitado por padrão)
+    ```bash
+    cd PontoPro-Backend
+    npm install
+    ```
 
-## 📱 Responsividade
+3.  **Configure o arquivo `.env`**:
 
-O sistema é totalmente responsivo e otimizado para:
+    - Crie um arquivo `.env` na pasta `PontoPro-Backend` com as seguintes variáveis de ambiente:
+      ```env
+      PORT=3000
+      MONGO_URI=sua_string_de_conexao_mongodb
+      JWT_SECRET=sua_chave_secreta_jwt
+      ```
 
-- **Desktop**: 1024px+ (layout completo com sidebar)
-- **Tablet**: 768px - 1024px (layout adaptado)
-- **Mobile**: < 768px (menu colapsível, layout vertical)
+4.  **Inicie o servidor**:
 
-### Breakpoints Principais:
-- `@media (max-width: 480px)`: Smartphones
-- `@media (max-width: 768px)`: Tablets portrait
-- `@media (max-width: 1024px)`: Tablets landscape
-- `@media (min-width: 1025px)`: Desktop
+    ```bash
+    npm run dev  # ou 'npm start' dependendo do script
+    ```
 
-## 🎨 Design System
+5.  **Acesse o front-end e instale as dependências do VITE**:
 
-### Paleta de Cores:
-- **Primary**: #2563eb (Azul principal)
-- **Success**: #16a34a (Verde para ações positivas)
-- **Warning**: #ea580c (Laranja para avisos)
-- **Danger**: #dc2626 (Vermelho para ações destrutivas)
-- **Background**: #f8fafc (Fundo principal)
-- **Surface**: #ffffff (Fundo de cards)
+    ```bash
+    npm install
+    ```
 
-### Tipografia:
-- **Font Family**: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
-- **Tamanhos**: 14px (base), 16px (médio), 24px (títulos)
-- **Pesos**: 400 (normal), 500 (medium), 600 (semibold), 700 (bold)
+6. **Inicie o servidor do VITE**:
 
-## 🔧 Funcionalidades Técnicas
+    ```bash
+    npm run dev  
+    ```
 
-### Armazenamento Local:
-- `pointprorh_auth`: Dados de autenticação
-- `pointprorh_employees`: Lista de funcionários
-- `pointprorh_settings`: Configurações do sistema
-- `pointprorh_departments`: Departamentos cadastrados
-- `pointprorh_report_history`: Histórico de relatórios
+7. **Acesso pelo link de desenvovimento no terminal**
 
-### Validações Implementadas:
-- **CPF**: Validação com dígitos verificadores
-- **E-mail**: Regex para formato válido
-- **Telefone**: Máscara automática (11) 99999-9999
-- **Campos obrigatórios**: Validação em tempo real
-- **Senhas**: Mínimo 6 caracteres
-
-### Recursos de UX:
-- **Loading states**: Indicadores visuais durante operações
-- **Toast notifications**: Feedback imediato para ações
-- **Modais de confirmação**: Para ações destrutivas
-- **Auto-save**: Salvamento automático de rascunhos
-- **Máscaras de input**: Formatação automática de dados
-
-## 📊 Dados de Demonstração
-
-O sistema vem com dados pré-cadastrados para demonstração:
-
-- **5 funcionários** de diferentes departamentos
-- **5 departamentos** padrão (Tecnologia, RH, Financeiro, Marketing, Vendas)
-- **Configurações** básicas do sistema
-- **Histórico** de relatórios de exemplo
-
-## 🔒 Segurança
-
-- **Validação client-side** para todos os formulários
-- **Sanitização** de dados de entrada
-- **Proteção de rotas** com redirecionamento
-- **Armazenamento seguro** no Local Storage
-- **Validação de sessão** em todas as páginas
-
-## 🚧 Melhorias Futuras
-
-- [ ] Integração com API backend
-- [ ] Sistema de permissões por usuário
-- [ ] Notificações push
-- [ ] Exportação de relatórios em PDF real
-- [ ] Sistema de anexos para funcionários
-- [ ] Controle de ponto integrado
-- [ ] Dashboard com gráficos interativos (Chart.js)
-- [ ] Sistema de backup automático
-
-## 🤝 Contribuição
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👨‍💻 Autor
-
-**PointPro RH Team**
-- Website: [www.pointprorh.com](https://www.pointprorh.com)
-- Email: contato@pointprorh.com
-- Suporte: suporte@pointprorh.com
-
-## 📞 Suporte
-
-Para suporte técnico ou dúvidas sobre o sistema:
-
-- **E-mail**: suporte@pointprorh.com
-- **Telefone**: (11) 3333-4444
-- **Website**: www.pointprorh.com
+    Ex: ➜  Local:   http://localhost:5173/
+   
 
 ---
 
-⭐ **Se este projeto foi útil para você, considere dar uma estrela no repositório!**
+## 🔒 Segurança e Dados
+
+- **Armazenamento de Dados**: Os dados são persistidos de forma segura no **MongoDB**, com a modelagem realizada pelo **Mongoose**.
+- **Validações**: O sistema utiliza **Joi** para validar os dados de entrada no backend, garantindo que apenas informações corretas sejam processadas.
+- **Autenticação Segura**: A autenticação é feita com **JWT**, e as senhas dos usuários são protegidas com **Bcrypt.js** para criptografia.
+
+---
+
+## 🚧 Melhorias Futuras
+
+- [ ] Sistema de relatórios (Geração, Histórico e Download).
+- [ ] Gerenciamento de departamentos.
+- [ ] Configurações de sistema (tema, notificações, formato de data).
+- [ ] Dashboard com **gráficos interativos** (e.g., usando Chart.js).
+- [ ] **Controle de ponto** integrado.
+- [ ] Exportação de relatórios em **PDF real**.
+- [ ] Sistema de **permissões** baseado em papéis de usuário.
+- [ ] Implementação de testes automatizados.
